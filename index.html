@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    </head>
+    <body ng-app="myApp">
+        <div ng-view></div>
+<a href="#!red">Red</a>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.2.14/angular-route.min.js"></script>
+        <script>
+        
+        var app = angular.module('myApp', ['ngRoute']);
+        app.config(function($routeProvider) {
+            $routeProvider                
+            .when('/',{templateUrl :'comment.html'})
+
+            .when('/home',{templateUrl : 'home.html',controller:'postController'})
+            .when('/comment',{templateUrl : 'comment.html',controller:'com'})
+
+
+                .otherwise({redirecTo : "/"});
+        });
+
+        
+        app.controller('com',function ($scope){
+                    $scope.commments=[{username:'max',content:'z commentaire bla blabla'},
+                                        {username:'aluc',content:'a commentaire bla blabla'},
+                                        {username:'marc',content:' b commentaire bla blabla'}
+                                ];
+                });
+                app.controller('postController',function ($scope){
+                    $scope.posts=[{username:'max',content:'z commentaire bla blabla'},
+                                        {username:'aluc',content:'a commentaire bla blabla'},
+                                        {username:'marc',content:' b commentaire bla blabla'}
+                                ];
+                });
+            </script>
+    
+    
+
+    </body>
+</html>
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
